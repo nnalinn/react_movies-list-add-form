@@ -1,4 +1,3 @@
-// NewMovie.tsx
 import { useState } from 'react';
 import { TextField } from '../TextField';
 
@@ -39,10 +38,9 @@ export const NewMovie = ({ onAdd }: NewMovieProps) => {
   });
 
   const handleChange = (name: string, value: string) => {
-    setField(prevFields => ({
-      ...prevFields,
-      [name]: value,
-    }));
+    setField(prevFields => {
+      return { ...prevFields, [name]: value };
+    });
   };
 
   const handleBlur = (field: keyof Fields) => {
@@ -68,8 +66,8 @@ export const NewMovie = ({ onAdd }: NewMovieProps) => {
     );
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
     if (isSubmitDisabled()) {
       return;
